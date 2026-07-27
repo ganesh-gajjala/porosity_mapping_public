@@ -1,5 +1,5 @@
 # Borehole Image Porosity Classifier
-### 🤖 Executive Summary
+### 📈 Executive Summary
 
 * **The Problem:** Quantifying secondary porosity from borehole image logs typically relies on subjective visual estimations by geologists, which limits reproducibility and scales poorly across deep or multi-well exploration projects.
 * **The Computational Solution:** Designed a computer vision and machine learning workflow in Python using Scikit-learn to segment structural images, automate feature extraction, and classify porosity patterns.
