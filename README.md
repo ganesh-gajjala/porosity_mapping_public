@@ -1,4 +1,9 @@
 # Borehole Image Porosity Classifier
+### 🤖 Executive Summary
+
+* **The Problem:** Quantifying secondary porosity from borehole image logs typically relies on subjective visual estimations by geologists, which limits reproducibility and scales poorly across deep or multi-well exploration projects.
+* **The Computational Solution:** Designed a computer vision and machine learning workflow in Python using Scikit-learn to segment structural images, automate feature extraction, and classify porosity patterns.
+* **The Domain Impact:** Standardizes reservoir characterization by delivering reproducible, high-resolution quantitative data on secondary porosity, directly enhancing accuracy in hydrogeological and geothermal reservoir capacity modeling.
 
 An automated, data-driven petrophysical tool designed to process, segment, and classify secondary porosity spaces from Borehole Image (BHI) logs. The script extracts features from raw `.dlis` files, handles sensor artifact interpolation, blends static and dynamic datasets, and groups structural features using advanced clustering techniques.
 
