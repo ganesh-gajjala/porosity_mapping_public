@@ -107,20 +107,22 @@ class BoreholePorosityClassifier:
             mask_slice = sensor_mask[row_from:row_to, :]
 
             # Inpaint gaps using OpenCV Telea
-            stat_intp_slice = cv.inpaint(stat_slice, mask_slice, 3, cv.INPAINT_TELEA)
-            dyn_intp_slice = cv.inpaint(dyn_slice, mask_slice, 3, cv.INPAINT_TELEA)
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
 
             self.im_stat_intp[row_from:row_to, :] = stat_intp_slice
             self.im_dyn_intp[row_from:row_to, :] = dyn_intp_slice
 
             # Blending and dynamic threshold filtering
-            sum_slice = stat_intp_slice * 0.5 + dyn_intp_slice * 0.5
-            self.im_sum[row_from:row_to, :] = sum_slice.astype("uint8")
-            sum_slice = np.where(sum_slice >= self.bit_range_min, sum_slice, 0)
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
 
             # Mathematical morphology to extract clean pore candidates
-            closed_slice = area_closing(sum_slice, 9, connectivity=1)
-            opened_slice = area_opening(closed_slice, 9, connectivity=1)
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
 
             self.im_closed[row_from:row_to, :] = closed_slice
             self.im_opened[row_from:row_to, :] = opened_slice
@@ -136,48 +138,43 @@ class BoreholePorosityClassifier:
         )
         print(f"Total isolated regions identified: {num_labels}")
 
-        properties = (
-            "label",
-            "area",
-            "centroid",
-            "area_convex",
-            "area_filled",
-            "axis_major_length",
-            "axis_minor_length",
-            "orientation",
-            "perimeter",
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
         )
         pore_prpty = regionprops_table(self.im_opened_labels, properties=properties)
 
         # Feature Engine Construction
-        df = pd.DataFrame(pore_prpty)
-        df = df[df["axis_minor_length"] > 0].copy()  # Remove divide-by-zero bounds
 
-        df["aspect_ratio"] = df["axis_major_length"] / df["axis_minor_length"]
-        df["roundness"] = df["area"] / df["area_convex"]
-        df["continuity"] = df["area"] / df["area_filled"]
-        df["depth"] = self.depth[0] + df["centroid-0"] * self.vertical_resolution
-        df["circularity"] = (df["area"] / df["perimeter"]) / (
-            df["perimeter"] / (4 * np.pi)
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
         )
-        df["tilt"] = np.abs(df["orientation"] * 180 / np.pi)
+        
 
         # Subset properties for spatial/geometric clustering
-        cluster_features = [
-            "label",
-            "area",
-            "centroid-0",
-            "centroid-1",
-            "axis_major_length",
-            "axis_minor_length",
-            "perimeter",
-            "aspect_ratio",
-            "roundness",
-            "continuity",
-            "tilt",
-            "depth",
-        ]
-        self.pore_df = df[cluster_features].copy()
+
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
 
         print("Executing density-based classification (HDBSCAN)...")
         hdb = HDBSCAN(copy=True, min_cluster_size=self.min_cluster_size)
@@ -196,12 +193,16 @@ class BoreholePorosityClassifier:
 
         self.cluster_image = lookup_table[self.im_opened_labels]
 
-        # Generate custom categorical color map array
-        n_clusters = len(np.unique(cluster_labels))
-        base_cmap = plt.get_cmap("gist_rainbow", n_clusters + 1)
-        colors = base_cmap(np.linspace(0, 1, base_cmap.N))
-        colors[0] = [1, 1, 1, 1]  # Set unassigned geological background matrix to pure white
-        self.cluster_cmap = ListedColormap(colors)
+
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
+            # CONFIDENTIAL
 
     def generate_and_save_plots(self):
         """Builds high-resolution QC panels and writes them safely to disk."""
