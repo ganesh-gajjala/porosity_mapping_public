@@ -1,6 +1,6 @@
 # LICENSE
 
-Copyright (c) 2026 Your Name / Technical University of Munich (TUM). All Rights Reserved.
+Copyright (c) 2026 Ganesh Gajjala / Technical University of Munich (TUM). All Rights Reserved.
 
 ## CONFIDENTIAL AND PROPRIETARY ACADEMIC & RESEARCH PROPERTY
 
