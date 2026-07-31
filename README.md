@@ -7,6 +7,8 @@
 
 <p align="center">
   <img src="./GTH2_2006-2008.png"  alt="Borehole Image Porosity Pipeline Plot" width="100%">
+  <br />
+  <sub><b>Extraction and Classification of Secondary Porosity from Borehole Image Logs Using ML & CV </b></sub>
 </p>
 
 An automated, data-driven petrophysical tool designed to process, segment, and classify secondary porosity spaces from Borehole Image (BHI) logs. The script extracts features from raw `.dlis` files, handles sensor artifact interpolation, blends static and dynamic datasets, and groups structural features using advanced clustering techniques.
